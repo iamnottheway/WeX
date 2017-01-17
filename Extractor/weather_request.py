@@ -11,7 +11,7 @@ class GetWeatherInfo(object):
 	def __init__(self,cityName):
 		self.cityName = cityName
 		self.weather_url = 'http://api.openweathermap.org/data/2.5/weather?q={0}&APPID={1}'
-		self.API_Key = '396cbf110cc7bd1bd3087f317643a83f'
+		self.API_Key = '[API_KEY]'
 		try:
 			# send a request to the page and get the page
 			self.requested_page = requests.get(self.weather_url.format(self.cityName,self.API_Key))
