@@ -8,9 +8,11 @@ Well, Heizenberg does that for you :)
 Heizenberg reads a string and looks for a city name, then it gives the current weather conditions of the city.
 
 Here's an example:
-
+    
+    // This is the input
     >> What is the weather in New York?
     
+    // This is the output
     .. It's Clouds in New York with 1.15C
 
     
