@@ -49,8 +49,30 @@ class GetWeatherConditions(object):
 		'''
 		return ConvertTemperature(self.WeatherDataObject['main']['temp_max'],unit)
 
+	def GetCurrentHumidity(self):
+		''' returns the current humidity'''
+		return self.WeatherDataObject['main']['humidity']
+
+	def GetCurrentPressure(self):
+		''' returns the current pressure in the city'''
+		return self.WeatherDataObject['main']['pressure']
+
+	def GetCurrentCoords(self):
+		''' returns the coordinates of the place in a tuble. tuple[0] --> lat and tuple[1] --> lon'''
+		return (self.WeatherDataObject['coord']['lat'],self.WeatherDataObject['coord']['lon'])
+
+	def GetCurrentWeather(self):
+		''' returns the current weather in a tuple. tuple[0] --> current phenomenon and tuple[1] --> weather description'''
+		return (self.WeatherDataObject['weather'][0]['main'],self.WeatherDataObject['weather'][0]['description'])
+
+	def GetCloudCoverPercent(self):
+		''' returns the percentage of clouds covering a particular place. Should be denoted in percentage'''
+		return self.WeatherDataObject['clouds']['all']
 
 if __name__ == '__main__':
 	WeXdata =GetWeatherConditions("London","396cbf110cc7bd1bd3087f317643a83f")
-	temp = WeXdata.GetCurrentTemperature()
-	print(temp)
+	print(WeXdata.GetCurrentTemperature())
+	print(WeXdata.GetCurrentHumidity())
+	print(WeXdata.GetCurrentCoords())
+	print(WeXdata.GetCurrentWeather())
+	print(WeXdata.GetCloudCoverPercent())
