@@ -1,11 +1,11 @@
-# Heizenberg.Weather.Extractor/python
+# WeX : A python weather extractor 
 
 Have you ever wanted to know, the current weather of a place, from a city name in a string? 
 I guess you have thought of it some time in your life. 
 
-Well, Heizenberg does that for you :)
+Well, WeX does that for you :)
 
-Heizenberg reads a string and looks for a city name, then it gives the current weather conditions of the city.
+WeX reads a string and looks for a city name, then it gives the current weather conditions of the city.
 
 Here's an example:
     
