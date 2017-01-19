@@ -1,35 +1,16 @@
-"""
 
-
-Description: Heizenberg is an Intelligent chat bot which can give the
-			 User current weather details from around the world.
-			 It can also carry simple conversations and suggest users,
-			 the wardrob they should wear when going out.
-
-
-"""
-
-# importing lib's
 
 import re
 import random
-
 from geotext.geotext import GeoText
 
-
-
-#***************************@ TEXT PROCESSING UNIT @****************************************
-
 class text_processing(object):
-
-
-	"""
+	'''
 
 	This class has methods to process the text.
 	Methods like uppercase, lowercase, tokenize and sentence parser
 
-	"""
-
+	'''
 	def __init__(self,text):
 		self.text = text
 
@@ -49,161 +30,143 @@ class text_processing(object):
 
 
 
-class Systematic_txt_checker(object):
-	'''docstring for Systematic_txt_checker or STC for short
-
-		The methods of this class use regex to find specific words
-		and return true if they exit.
-
-		This method can be used to find what the user is asking.
-		And also provide some relevent responces to the user's query.
-
-		Class Methods :
-				match_words : searches the string to find words like weather or temperature
-								and return the value. This method has one optional argument.
-								The optional arg acts as a switch, for the return values
-
-				relevent_word: returns the word list from the match_words() method
-
-	'''
-	def __init__(self,string):
+class SearchKeyWords(object):
+	
+	def __init__(self,string=None):
 		self.string = string
 
+	def match_words(self,string):
 
-	def match_words(self,*l_switch):
-		"""
+		'''
+		Takes a string as an argument.
 
-		Checks the string if words like weather, temperature exists, returns them
+		This method matches any keywords like weather, temperature, etcetera.
+		if keywords are found, then it returns the keyword
 
-		l_switch : Limits the return value for this function
-					If there are more than 1 return value, you can set this function to
-					return only one. l_switch if it's set to one, then the limit is set to one.
-					Only one return value.
+		example :
 
-		"""
+				>> Whats the weather and temperature in London
+				.. ['weather ', 'temperature']
 
-		# for the optional argument : Don't remove this or edit this!
-		l_switch_value = None
-		for ls in l_switch:
-			l_switch_value = ls
 
+		But when using just use the first element. 
+			Ex : list[0]
+
+		Since multiple reading functionality is not added yet
+
+		'''
 
 		# regular exxpression to find or match with the string
-		matched_words = r"[A-Za-z]eath[a-z]*r | [Tt][Ee][A-Za-z]*p[a-z]*"
-		# searches for the matched_words in the string
-		_final_words = re.findall(matched_words,self.string)
+		self.regex_match = r"[A-Za-z]eath[a-z]*r |[Tt][Ee][A-Za-z]*p[a-z]*"
+		# searches for the regex_match in the string
+		self.Matched_keyword = re.findall(self.regex_match,string)
+		return self.Matched_keyword
+
+	def KeyWords(self):
+		'''
+
+		returns the first keyword from the list
+		
+		'''
+		return self.match_words(self.string)[0]
+		
 
 
-		if l_switch_value == 1:
-			if len(_final_words) > 1:
-				_final_words = _final_words[0]
+import Wex_data
 
-		return _final_words
+class WexWeather(object):
 
-	def relevent_word(self):
+	def __init__(self,string,SendRequest=True,Api_Key):
 
-		"""
-		This method returns the words from the match_words() method.
+		'''
+		
+		WexWeather class takes 2 arguments, first one is a string.
+		And second argument is a flag variable.
 
-		This is a return function. Just does it's job!
+		string : Input anything you want, if there is or there are city
+				 names in that string, you'll recieve the city names
 
-		"""
+		SendRequest: This flag is by default set to true. That means it
+					 can send requests to get the weather data. Keep it true
+					 if you want to send requests. In anycase you want to 
+					 set it to false, do so. It just won't send any request.
+					 This is useful if you just want to identify the city names
+					 from a string. Setting it to true will also do the same, but
+					 sending a request and recieving the data takes some time.
 
-		self.rel_word = self.match_words(1)
-		return self.rel_word
+					 Do this only if you want to extract the city names. But if you want 
+					 the weather data, set it to true or leave it without passing the 
+					 argument.
+
+					 example: with SendRequest=True
+
+							 >> Whats the weather in London and New York and San Jose and San Francisco
+
+								# some seconds later
+
+							.. ['London', 'New York', 'San Jose', 'San Francisco']
+
+					example: with SendRequest=False
+							 >> Whats the weather in London and New York and San Jose and San Francisco
+
+								# 0.00000001s later. This is fast!
+
+							.. ['London', 'New York', 'San Jose', 'San Francisco']
+
+			Api_Key : Get your api key from openweather.com and use it.
 
 
 
 
-class Show_details(object):
+		'''
 
-	"""
+		self.Keywords = SearchKeyWords(string)
+		# uses GeoText() module to Extract the cities
+		self.CityName = GeoText(string).cities
+		if SendRequest is True:
+			self.WeatherObject = Wex_data.GetWeatherConditions(self.CityName[0],Api_Key)
+		else:
+			pass
 
-	This class is used by the Understand_user() class.
-	The Understand_user() class shows the data in a human readable form.
-	But, not so formal. Displays It like a bot.
 
-	"""
+	def WexGetWeather(self):
+		self.CityList = self.Keywords.KeyWords() 
+		self.CurrentWeather = self.WeatherObject.GetCurrentWeather()
+		self.CurrentTemperature = self.WeatherObject.GetCurrentTemperature()
+		return [self.CurrentWeather,self.CurrentTemperature]
 
+	def GetCityNames(self):
+		'''
+			Returns the city names in a list.
+
+			Useful if you have multiple city names in a string
+			and you want to use anyone of the names.
+
+			example:
+				>> Whats the weather in London and New York and San Jose and San Francisco
+
+				.. ['London', 'New York', 'San Jose', 'San Francisco']
+
+
+		'''
+		return self.CityName
+
+
+
+class ShowWeatherConditions(object):
+
+	
 	def __init__(self,data,place):
 		# The data argument can be any list.
 		self.data = data
 		self.place = place
 
-	def show_Weather_data(self):
-		# friendly responses
-		self.weather_responses = ["It's {0} in {1} @ {2}C",
-									"{0} in {1} with {2}C",
-									"Hey, there Here's the weather you wanted\nWeather:{0}\nPlace:{1}\ntemperature:{2}C",
-									"It's {2}C and {0} in {1}"
-								]
-		# chooses a random integer
-		random_choice = random.randint(0,len(self.weather_responses))
-		# returns the response
-		# -------------Test test displaying--------------
+	def FormatWeatherConditions(self):
+		# user friendly responses
+		self.WeatherResp = ["It's {2}C and {0} in {1}"]
+		return self.WeatherResp[0].format(self.data[0],self.place,self.data[1])
 
-		#print(self.weather_responses[3].format(self.data[0],self.place,round(self.data[5],2)))
-		#----------------------------------------------------------------------------------------------
-
-		return self.weather_responses[random_choice-1].format(self.data[0],self.place,round(self.data[5],2))
-
-
-
-#------------------------------@ Extraction  @----------------------------------------------------
-
-
-# import the weather_request module which calls the weather JSON data
-
-import weather_request
-
-class ExtractPlaceNames(object):
-
-	def __init__(self,string):
-		self.string = string
-		# create a Systematic_txt_checker object
-		self.Txt_checker = Systematic_txt_checker(self.string)
-		# uses GeoText() module to identify the place
-		self.city_name = GeoText(self.string).cities
-		print(self.city_name)
-		# create a weather_request object
-		self.weather_obj = weather_request.GetWeatherInfo(self.city_name)
-
-
-	def Show_Extracted_info(self):
-		# call the method to get the relevent word.
-		# Here relevent word means, the word which is used as a clue, to find what the user wants to know - like weather
-		self.word_list = self.Txt_checker.relevent_word() # returned value is a list
-
-		for x_word in self.word_list:
-			# don't know why the comparing doesn't work with string or other list.
-			# This just works with the word_list
-			if x_word == self.word_list[0]:
-				# returns the weather of a certain place
-				# Read the weather_request.py documentation for information on usage
-				# returns weather, description, pressure and humidity, wind respectivly as a list
-				self.weather_data = self.weather_obj.Get_weather()
-
-				# returns the temperature of a place
-				self.temperature_data = self.weather_obj.Get_temperature()
-
-				# add temperature_data to the weather_data[0] list
-				self.weather_data.append(self.temperature_data[0]) # this is the 5th element
-				# create a show_details object to display the weather data
-				# now weather_data has 5 elements weather, description, pressure and humidity, wind respectivly as a list
-
-				self.Show_weather_Details = Show_details(self.weather_data,self.city_name[0])
-				# access's the show_Weather_data() method to display the data in a nice way;)
-
-				self.friendly_weather_resp = self.Show_weather_Details.show_Weather_data()
-				print(self.friendly_weather_resp) # Displays it!
-
-
-
-
-
-
-#******************************@ TEST AREA @***********************************************************
-# city names must be capitalized
 if __name__== '__main__':
-	S = ExtractPlaceNames("Whats the weather in New York")
-	S.Show_Extracted_info()
+
+	w = WexWeather("whats the weather in London","[API-KEY]")
+	print(w.WexGetWeather())
