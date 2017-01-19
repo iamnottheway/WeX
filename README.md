@@ -1,3 +1,4 @@
+# Needs some fixes So don't use it yet!
 # WeX : A python weather extractor 
 
 Have you ever wanted to know, the current weather of a place, from a city name in a string? 
