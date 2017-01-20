@@ -1,4 +1,4 @@
-# pip package will be added soon
+
 # WeX : A python weather extractor :earth_americas::sun_with_face::cloud:
 
 *Have you ever wanted to know, the current weather of a place, from a city name in a string? 
@@ -11,6 +11,17 @@ WeX reads a string and looks for a city name, then it gives the current weather 
 This works with python3, I haven't tried it with python2
 
 ## Documentation will be added :page_facing_up::bell::book::computer::computer:
+
+## Installation:electric_plug::electric_plug: 
+
+        * pip install package will be added soon (Learning to create a package :) )
+        * Download or clone the repository
+        * Put the Extractor folder in any folder you want
+        * Done!
+       
+       Start by import:
+       
+                from Extractor import Wex
 
 **_What does it do?_**
     
