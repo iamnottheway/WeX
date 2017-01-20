@@ -31,6 +31,9 @@ That's it. Just tiny bit of code to get the current weather of New York.
 Note
 -----
  * Depends on geotext library to extract places(It's included)  https://github.com/elyase/geotext
+   To install geotext library, run that in the terminal.
+            
+            pip install geotext
  
  * weather data from https://openweathermap.org/
    Create an account and use the API key to use this.
