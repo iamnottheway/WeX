@@ -33,6 +33,7 @@ Note
 -----
  * Depends on geotext library to extract places(It's included)  https://github.com/elyase/geotext
    To install geotext library, run that in the terminal.
+   Read more about geotext on https://geotext.readthedocs.io/en/latest/
             
             pip install geotext
  
