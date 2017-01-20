@@ -13,7 +13,7 @@ WeX reads a string and looks for a city name, then it gives the current weather 
 What does it do?
     
     // This is the input
-    >> What is the weather in New York?
+    >> What is the weather in London?
     
     // This is the output
     .. It's Clouds in London with 1.15C
@@ -57,6 +57,7 @@ Note
  
  * weather data from https://openweathermap.org/
    Create an account and use the API key to use this. Supply the API-key when creating the object:zap:
+ * The output responses have been changed. 
 
 
 Happy codding!:doughnut::coffee::beers::evergreen_tree:
