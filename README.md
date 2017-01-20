@@ -8,7 +8,9 @@ Well, WeX does that for you :)
 
 WeX reads a string and looks for a city name, then it gives the current weather conditions of the city.*
 
-## Documentation will be added :page_facing_up::bell::book:
+This works with python3, I haven't tried it with python2
+
+## Documentation will be added :page_facing_up::bell::book::computer::computer:
 
 **_What does it do?_**
     
@@ -21,18 +23,18 @@ WeX reads a string and looks for a city name, then it gives the current weather 
     
 **_How does it work?_**:wrench::nut_and_bolt:
 -----------------
-            #import the Wex module
+```python
+from Extractor import Wex
+from Extractor.Wex import FormatWeatherConditions
             
-            from Extractor import Wex
-            from Extractor.Wex import FormatWeatherConditions
+weather = Wex.WexWeather("Whats the weather in London?","[API-Key]")
             
-            weather = Wex.WexWeather("Whats the weather in London?","[API-Key]")
+data = weather.WexGetWeather()
             
-            data = weather.WexGetWeather()
+ weather = FormatWeatherConditions(data)
             
-            weather = FormatWeatherConditions(data)
-            
-            print(weather)
+print(weather)
+```
  
 _That's it. Just tiny bit of code to get the current weather of London.:memo:
 
@@ -51,13 +53,16 @@ Note :speaker::speaker::speaker:
    To install geotext library, run that in the terminal.
    Read more about geotext on https://geotext.readthedocs.io/en/latest/ :earth_americas: :palm_tree: :sun_with_face:
    
-            Installing geotext
-            
-            # for python2.7 
-            pip install geotext
-            
-            # for python3
-            pip3 install geotext 
+   ###Installing geotext
+   for python2
+    ```
+     pip install geotext
+    ```
+          
+    for python3
+    ```
+     pip3 install geotext 
+    ```
  
  * weather data from https://openweathermap.org/
    Create an account and use the API key to use this. Supply the API-key when creating the object:zap:
