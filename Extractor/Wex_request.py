@@ -123,7 +123,7 @@ class WexExtractor(object):
 		return self.SendGetRequest()
 
 if __name__ == '__main__':
-	wex = WexExtractor("London","396cbf110cc7bd1bd3087f317643a83f")
+	wex = WexExtractor("London","KEY")
 	data = wex.GetJsonData()
 	print(data)
 

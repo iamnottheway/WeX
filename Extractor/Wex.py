@@ -4,6 +4,7 @@ import re
 import random
 from geotext.geotext import GeoText
 
+
 class text_processing(object):
 	'''
 
@@ -78,8 +79,7 @@ class SearchKeyWords(object):
 		return self.match_words(self.string)[0]
 		
 
-
-import Wex_data
+from Extractor import Wex_data
 
 class WexWeather(object):
 

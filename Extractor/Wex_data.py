@@ -1,5 +1,5 @@
 
-import Wex_request
+from Extractor import Wex_request
 
 def ConvertTemperature(temp,unit='cel'):
 	'''
