@@ -1,5 +1,4 @@
-# Some more fixes! Then you can use it :)
-# will be available soon!
+
 # WeX : A python weather extractor 
 
 Have you ever wanted to know, the current weather of a place, from a city name in a string? 
@@ -9,24 +8,36 @@ Well, WeX does that for you :)
 
 WeX reads a string and looks for a city name, then it gives the current weather conditions of the city.
 
-Here's an example:
+What does it do?
     
     // This is the input
     >> What is the weather in New York?
     
     // This is the output
-    .. It's Clouds in New York with 1.15C
+    .. It's Clouds in London with 1.15C
 
     
 How does it work?
 -----------------
-
-    from Extract_Weather import ExtractPlaceNames 
-
-    weather = ExtractPlaceNames("What is the weather in New York")
-    weather.Show_Extracted_info()
+            #import the Wex module
+            from Extractor import Wex
+            from Extractor.Wex import FormatWeatherConditions
+            
+            weather = Wex.WexWeather("Whats the weather in London?","[API-Key]")
+            data = weather.WexGetWeather()
+            weather = FormatWeatherConditions(data)
+            print(weather)
  
-That's it. Just tiny bit of code to get the current weather of New York.
+That's it. Just tiny bit of code to get the current weather of London.
+
+About Contributing
+--------------------
+
+All Contributions are welcome. If there is any issue or a bug open an issue.
+If you know what to do, please to this. 
+
+All of your help will be considered. Help make this project reach many people,
+so that they can use this in their projects :)
 
     
 Note
