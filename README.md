@@ -8,6 +8,8 @@ Well, WeX does that for you :)
 
 WeX reads a string and looks for a city name, then it gives the current weather conditions of the city.
 
+# Documentation will be added
+
 What does it do?
     
     // This is the input
