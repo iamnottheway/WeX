@@ -1,4 +1,4 @@
-
+# pip package will be added soon
 # WeX : A python weather extractor :earth_americas::sun_with_face::cloud:
 
 *Have you ever wanted to know, the current weather of a place, from a city name in a string? 
