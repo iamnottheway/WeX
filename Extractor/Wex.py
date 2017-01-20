@@ -28,6 +28,13 @@ class text_processing(object):
 		'''
 		return self.text.lower().split()
 
+def Remove_Puncts(text):
+	'''
+		removes any punctuation
+
+	'''
+	return text.lower()[0,-1]
+
 
 
 class SearchKeyWords(object):
@@ -59,7 +66,7 @@ class SearchKeyWords(object):
 		# regular exxpression to find or match with the string
 		self.regex_match = r"[A-Za-z]eath[a-z]*r |[Tt][Ee][A-Za-z]*p[a-z]*"
 		# searches for the regex_match in the string
-		self.Matched_keyword = re.findall(self.regex_match,string)
+		self.Matched_keyword = re.findall(self.regex_match,Remove_Puncts(string))
 		return self.Matched_keyword
 
 	def KeyWords(self):
@@ -173,6 +180,6 @@ def FormatWeatherConditions(WeatherData):
 
 if __name__== '__main__':
 
-	w = WexWeather("whats the weather in New York","[KEY]")
+	w = WexWeather("whats the weather in New York?","[Key]")
 	data = w.WexGetWeather()
 	print(FormatWeatherConditions(data))
