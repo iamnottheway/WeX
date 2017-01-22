@@ -11,6 +11,15 @@ WeX reads a string and looks for a city name, then it gives the current weather 
 
 ## Documentation will be added :page_facing_up::bell::book::computer::computer:
 
+## Why should you use it?And Where can you use it?
+
+  If you are building a chatbot and you want to make the bot give the current weather of a city by reading
+  a string you can use WeX. Or if you want to make an app which responds to your voice and shows you the weather,
+  you can use WeX.
+  
+  And if you want to make a mod for a game which makes the weather change in the game, when it actually changes
+  in the real world.
+
 ## Installation:electric_plug::electric_plug: 
 
         * pip install package will be added soon (Learning to create a package :) )
