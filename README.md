@@ -1,14 +1,13 @@
 
 # WeX : A python weather extractor :earth_americas::sun_with_face::cloud:
 
-*Have you ever wanted to know, the current weather of a place, from a city name in a string? 
+Have you ever wanted to know, the current weather of a place, from a city name in a string? 
 I guess you have thought of it some time in your life. :umbrella: :sunny: :snowman:
 
 Well, WeX does that for you :)
 
-WeX reads a string and looks for a city name, then it gives the current weather conditions of the city.*
+WeX reads a string and looks for a city name, then it gives the current weather conditions of the city.
 
-This works with python3, I haven't tried it with python2
 
 ## Documentation will be added :page_facing_up::bell::book::computer::computer:
 
@@ -23,7 +22,7 @@ This works with python3, I haven't tried it with python2
        
                 from Extractor import Wex
 
-**_What does it do?_**
+###What does it do?
     
     // This is the input
     >> What is the weather in London?
@@ -47,7 +46,7 @@ data = weather.WexGetWeather()
 print(weather)
 ```
  
-_That's it. Just tiny bit of code to get the current weather of London.:memo:
+That's it. Just tiny bit of code to get the current weather of London.:memo:
 
 About Contributing  :busts_in_silhouette::speech_balloon::bust_in_silhouette:
 --------------------
@@ -55,7 +54,7 @@ About Contributing  :busts_in_silhouette::speech_balloon::bust_in_silhouette:
 All Contributions are welcome. If there is any issue or a bug open an issue.
 
 All of your help will be considered. Help make this project reach many people,
-so that they can use this in their projects :) _
+so that they can use this in their projects :) 
 
     
 Note :speaker::speaker::speaker:
@@ -79,8 +78,7 @@ Note :speaker::speaker::speaker:
    Create an account and use the API key to use this. Supply the API-key when creating the object:zap:
  * The output responses have been changed. 
 
-
-###Happy coding!:doughnut::coffee::beers::evergreen_tree:
+:doughnut::coffee::beers::evergreen_tree:
 
 
 
