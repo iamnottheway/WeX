@@ -22,7 +22,10 @@ print(weather.WexGetWeather())
 ```
 
 ##Output
-> ("Clouds","1.15")
+> ['Clouds', -1.11, 1033.36, 86, 20]
+
+
+The list contains weather, temperature(c), pressure,humidity,cloud cover
 
 
 ##Requirements
