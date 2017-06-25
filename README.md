@@ -1,8 +1,8 @@
 
 # Wex : Python weather extractor :earth_americas::sun_with_face::cloud:
 
-Weather Extractor(Wex) is a python library to extract weather data from a string. Wex searches for a city name in a string
-and gets you the current weather conditions.
+Weather Extractor(Wex) is a python library which uses NLP to give you the weather forecast. 
+You give it a string and it gives you the data.
 
 Wex is built for Weather Bots. A Weather Bot can figure out what the text says.Wex is built to make it easier for people to build weatherbots which can get the weather.
 
